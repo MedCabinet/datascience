@@ -17,7 +17,7 @@ import pandas as pd
 import os
 import numpy
 from flask import *
-from .models import DB
+# from .models import DB
 
 TODO = 'TODO'
 
@@ -25,8 +25,11 @@ def create_app():
     """
     Creates the app
     """
-    app = Flask(__name__)
 
+    external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
+
+    app = dash.Dash(__name__, external_stylesheets)
+    app.config.suppress_callback_exceptions = True
     # app.config[' '] = TODO
     # app.config[' '] = TODO
 
