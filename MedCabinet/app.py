@@ -16,7 +16,7 @@ from dash.dependencies import Output, Input
 import pandas as pd
 import os
 import numpy
-
+from .models import DB
 
 def create_app():
     """
@@ -26,11 +26,12 @@ def create_app():
 
     app.layout =html.Div(dcc.Graph(id))
 
-    # DB.init_app(app) #Makes DataBase
+    DB.init_app(app) #Makes DataBase
 
     @app.route('/')
     def root():
-        return 
+
+        return "yeet"
 
     # @app.route('/strain')
     # def strain():
@@ -39,3 +40,5 @@ def create_app():
     return app
 
 
+if __name__ == "__main___":
+    APP.run
