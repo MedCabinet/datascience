@@ -1,3 +1,4 @@
 {
-    "python.pythonPath": "C:\\Users\\Trapl\\.virtualenvs\\datascience-ZCu60gyM\\Scripts\\python.exe"
+    "python.pythonPath": "C:\\Users\\Trapl\\.virtualenvs\\datascience-ZCu60gyM\\Scripts\\python.exe",
+    "jupyter.jupyterServerType": "local"
 }

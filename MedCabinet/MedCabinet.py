@@ -1,10 +1,3 @@
-
-
-
-
-
-
-
 class MedCabinet:
 
     def __init__(slelf):

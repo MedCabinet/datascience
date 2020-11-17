@@ -16,15 +16,20 @@ from dash.dependencies import Output, Input
 import pandas as pd
 import os
 import numpy
+from flask import *
 from .models import DB
+
+TODO = 'TODO'
 
 def create_app():
     """
     Creates the app
     """
-    app = dash.Dash(__name__)
+    app = Flask(__name__)
 
-    app.layout =html.Div(dcc.Graph(id))
+    # app.config[' '] = TODO
+    # app.config[' '] = TODO
+
 
     DB.init_app(app) #Makes DataBase
 
@@ -33,12 +38,5 @@ def create_app():
 
         return "yeet"
 
-    # @app.route('/strain')
-    # def strain():
-    #     pass
-
     return app
 
-
-if __name__ == "__main___":
-    APP.run
