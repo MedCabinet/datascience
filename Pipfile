@@ -14,6 +14,11 @@ dash-renderer = "*"
 dash-html-components = "*"
 dash-core-components = "*"
 pandas = "*"
+flask = "*"
+flask-sqlalchemy = "*"
+jupyter = "*"
+ipykernel = "*"
+spacy = "*"
 
 [requires]
 python_version = "3.8"
