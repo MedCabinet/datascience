@@ -8,17 +8,13 @@ verify_ssl = true
 [packages]
 numpy = "==1.19.3"
 dash = "*"
-plotly = "*"
-plotly-express = "*"
-dash-renderer = "*"
-dash-html-components = "*"
-dash-core-components = "*"
 pandas = "*"
-flask = "*"
-flask-sqlalchemy = "*"
+sci-kitlearn = "*"
 jupyter = "*"
-ipykernel = "*"
-spacy = "*"
+ipykernal = "*"
+heroku = "*"
+plotly = "*"
+Flask-SQLAlchemy = "*"
 
 [requires]
 python_version = "3.8"
