@@ -6,15 +6,16 @@ verify_ssl = true
 [dev-packages]
 
 [packages]
-numpy = "==1.19.3"
-dash = "*"
+scikit-learn = "*"
+spacy = "*"
 pandas = "*"
-sci-kitlearn = "*"
-jupyter = "*"
-ipykernal = "*"
-heroku = "*"
+tensorflow = "*"
+dash = "*"
 plotly = "*"
-Flask-SQLAlchemy = "*"
+dash-core-components = "*"
+dash-html-components = "*"
+jupyter = "*"
+Keras = "*"
 
 [requires]
 python_version = "3.8"

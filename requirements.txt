@@ -1,0 +1,11 @@
+scikit-learn
+spacy
+pandas
+tensorflow
+keras
+dash
+plotly
+dash_core_components
+dash_html_components
+jupyter
+

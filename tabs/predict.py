@@ -8,85 +8,60 @@ import pandas as pd
 
 from app import app
 
-loan_purposes = ['Business',
-                 'Car financing',
-                 'Credit card refinancing',
-                 'Debt consolidation',
-                 'Green loan',
-                 'Home buying',
-                 'Home improvement',
-                 'Major purchase',
-                 'Medical expenses',
-                 'Moving and relocation',
-                 'Other',
-                 'Vacation']
+Stain_use = ['Pain',
+                 'Chemo',
+                 'Anxiety',
+                 'Seizures',
+                 'Stess',
+                 'Eating disorder',
+                 'Insomnia',
+                 'Harmful Medication withdrawal'
+                 ]
 
 style = {'padding': '1.5em'}
 
 layout = html.Div([
     dcc.Markdown("""
-        ### Predict
+        ### Predict Marijana strain given use cases
 
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-    
     """), 
 
     html.Div([
-        dcc.Markdown('###### Annual Income'), 
-        dcc.Slider(
-            id='annual-income', 
-            min=20000,
-            max=200000,
-            step=5000,
-            value=65000, 
-            marks={n: f'{n/1000:.0f}k' for n in range(20000,220000,20000)} 
-        ), 
+        dcc.Markdown('###### Uses case'), 
+        dcc.Dropdown(
+            options =[ 
+                {'label': 'Pain', 
+                        'value': 'Pain'},
+                {'lavel': 'Chemo', 
+                        'value': 'Chemo'},
+                {'label': 'Anxiety', 
+                        'value': 'Anxiety'},
+                {'lavel': 'Seizures', 
+                        'value': 'Seizures'},
+                {'label': 'Stress', 
+                        'value': 'Stress'},
+                {'lavel': 'Eating disorder', 
+                        'value': 'Eating disorder'},
+                {'label': 'Insomnia', 
+                        'value': 'Insomnia'},
+                {'lavel': 'Harmful Medication withdrawal',
+                        'value': 'Harmful medIcation withrawal'},
+                {'label': 'Addiction recovery', 
+                        'value': 'Addiction recovary'}
+            ],
+            multiple=True
+            ), 
     ], style=style), 
 
     html.Div([
-        dcc.Markdown('###### Credit Score'), 
-        dcc.Slider(
-            id='credit-score', 
-            min=650,
-            max=850, 
-            step=10, 
-            value=700, 
-            marks={n: str(n) for n in range(650,900,50)}
+        dcc.Markdown('###### Pain Index'), 
+        dcc.RangeSlider(
+           marks = {yin: f'Label{yin}' for yin in range(0, 11)},
+           min = 0,
+           max = 10,
+           value= [-3, 4]
         ),
     ], style=style), 
-
-    html.Div([
-        dcc.Markdown('###### Loan Amount'), 
-        dcc.Slider(
-            id='loan-amount', 
-            min=1000, 
-            max=40000, 
-            step=1000, 
-            value=10000, 
-            marks={n: f'{n/1000:.0f}k' for n in range(5000,45000,5000)}
-        ),  
-    ], style=style),
-
-    html.Div([
-        dcc.Markdown('###### Loan Purpose'), 
-        dcc.Dropdown(
-            id='loan-purpose', 
-            options=[{'label': purpose, 'value': purpose} for purpose in loan_purposes], 
-            value=loan_purposes[0]
-        ), 
-    ], style=style),
-
-    html.Div([
-        dcc.Markdown('###### Monthly Debts'), 
-        dcc.Slider(
-            id='monthly-debts', 
-            min=0, 
-            max=5000, 
-            step=100, 
-            value=1000, 
-            marks={n: str(n) for n in range(500,5500,500)}
-        )
-    ], style=style),
 
     dcc.Markdown('### Prediction'), 
     html.Div(id='prediction-content', style={'marginBottom': '5em'}), 
@@ -102,13 +77,10 @@ layout = html.Div([
      Input('monthly-debts', 'value')])
 def predict(annual_income, credit_score, loan_amount, loan_purpose, monthly_debts):
 
-    df = pd.DataFrame(
-        columns=['Annual Income', 'Credit Score', 'Loan Amount', 'Loan Purpose', 'Monthly Debts'], 
-        data=[[annual_income, credit_score, loan_amount, loan_purpose, monthly_debts]]
-    )
+    df = pd.read_csv('model/Cannabis_Strain_Features.csv')
 
     pipeline = load('model/pipeline.joblib')
     y_pred_log = pipeline.predict(df)
     y_pred = np.expm1(y_pred_log)[0]
 
-    return f'Interest rate for 36 month loan: {y_pred:.2f}%'
+    return f'Mstrain : {y_pred:.2f}%'
