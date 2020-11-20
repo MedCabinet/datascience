@@ -8,6 +8,8 @@ import pandas as pd
 
 from app import app
 
+TODO = 'TODO'
+
 Stain_use = ['Pain',
                  'Chemo',
                  'Anxiety',
@@ -75,12 +77,12 @@ layout = html.Div([
      Input('loan-amount', 'value'),
      Input('loan-purpose', 'value'),
      Input('monthly-debts', 'value')])
-def predict(annual_income, credit_score, loan_amount, loan_purpose, monthly_debts):
+def predict():
 
     df = pd.read_csv('model/Cannabis_Strain_Features.csv')
 
     pipeline = load('model/pipeline.joblib')
     y_pred_log = pipeline.predict(df)
-    y_pred = np.expm1(y_pred_log)[0]
+    y_pred = 
 
     return f'Mstrain : {y_pred:.2f}%'
